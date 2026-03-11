@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <title>Quill</title>
 
+    <!-- Fonts and Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
     {% block head %}{% endblock %}
 </head>
@@ -13,35 +19,15 @@
 <body>
 
 <header>
-    <div class="navbar">
-        <div class="nav-logo">
-            <img src="{{ url_for('static', filename='images/logo.png') }}"
-                 alt="Quill logo"
-                 class="logo-img">
-        </div>
-
-        <div class="nav-elements hover-feature">
-            <div class="nav-home hover-feature">
-                <a href="{{ url_for('index') }}">Home</a>
-            </div>
-
-            <div class="nav-about hover-feature">
-                <a href="{{ url_for('Aboutus') }}">About Us</a>
-            </div>
-
-            <div class="nav-about hover-feature">
-                <a href="{{ url_for('Contact') }}">Contact</a>
-            </div>
-            
-            <div class="nav-signup hover-feature">
-                <a href="{{ url_for('signup') }}">Sign Up</a>
-            </div>
-        </div>
-    </div>
+    {% block navbar %}
+        <!-- Default: show visitor navbar -->
+        {% include 'navbar1.html' %}
+    {% endblock %}
 </header>
 
-
-{% block body %}{% endblock %}
+<main style="margin-top: 60px;"> <!-- Reserve space for fixed navbar -->
+    {% block body %}{% endblock %}
+</main>
 
 <footer>
     <div class="footer-panel">

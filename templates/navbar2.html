@@ -1,0 +1,21 @@
+<!-- navbar2.html -->
+<div class="navbar">
+    <div class="nav-logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Quill logo" class="logo-img">
+    </div>
+
+    <div class="nav-elements hover-feature">
+        <div class="nav-dashboard hover-feature">
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        </div>
+
+        <div class="nav-timer hover-feature">
+            <a href="{{ url_for('timer') }}">Timer</a>
+        </div>
+
+        <div class="nav-signout hover-feature">
+            <!-- Direct logout link -->
+            <a href="{{ url_for('logout') }}">Sign Out</a>
+        </div>
+    </div>
+</div>

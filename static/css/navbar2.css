@@ -1,10 +1,12 @@
-*{
+/* Reset / base */
+* {
     margin: 0;
     font-family: 'Nunito', sans-serif;
     box-sizing: border-box;
 }
 
-.navbar{
+/* Navbar */
+.navbar {
     height: 60px;
     background-color: #E3DFFF;
     display: flex;
@@ -13,11 +15,12 @@
     position: fixed;
     width: 100%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1 ;
+    z-index: 1;
     top: 0;
 }
 
-.nav-logo{
+/* Logo */
+.nav-logo {
     height: 40px;      
     width: auto;
     display: flex;
@@ -25,14 +28,15 @@
     padding: 20px;
 }
 
-.logo-img{
+.logo-img {
     height: 45px;              
     width: auto;
     object-fit: contain;
 }
 
-.nav-elements{
-    color:#A389F4;
+/* Navbar links container */
+.nav-elements {
+    color: #A389F4;
     font-size: 1.25rem;
     font-weight: bold;
     display: flex;
@@ -41,32 +45,38 @@
     padding: 0 60px;
 }
 
-
+/* Individual link blocks */
 .nav-elements > div {
-    border-radius: 8px;           
-    transition: all 0.3s ease;    
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
-
+/* Links */
 .nav-elements > div > a {
-    display: block;               
-    padding: 6px 12px;           
-    border-radius: 8px;          
-    text-decoration: none;        
-    color: #A389F4;               
-    font-weight: bold;           
-    transition: all 0.3s ease;    
+    display: block;
+    padding: 6px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #A389F4;
+    font-weight: bold;
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
-
 .nav-elements > div > a:hover {
-    background-color: rgba(163, 137, 244, 0.2); 
+    background-color: rgba(163, 137, 244, 0.2);
 }
 
+/* Username display on the right */
+.nav-username {
+    color: #482d6f;
+    font-weight: 600;
+    font-size: 1rem;
+    padding-right: 20px;
+}
 
-
-.footer-panel{
+/* Footer (same as before login) */
+.footer-panel {
     display: flex;
     background-color: #E3DFFF;
     color: #8353c6;
@@ -75,8 +85,24 @@
     text-align: center;
     gap: 200px;
     box-shadow: 0px -10px 10px -5px rgba(0, 0, 0, 0.1);
-
 }
-header{
+
+/* Header height to reserve space for fixed navbar */
+header {
     height: 60px;
+}
+
+/* Body and html */
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto;
 }

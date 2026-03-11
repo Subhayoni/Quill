@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/timer.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar2.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<!-- Include Navbar -->
+{% include 'navbar2.html' %}
+
+<div class="timer-page">
+    <div class="timer-box">
+        <div id="timerDisplay">25:00</div>
+        <button id="studyBtn" onclick="startTimer()">Study Now</button>
+        <button id="giveUpBtn" onclick="openConfirm()" style="display:none;">Give Up</button>
+    </div>
+</div>
+
+<!-- Study Time Popup -->
+<div id="timePopup" class="popup">
+    <div class="popup-content">
+        <h2>Set Study Time</h2>
+        <input id="studyMinutes" type="number" min="1" step="1" placeholder="Minutes" required>
+        <button onclick="setTime()">Start Session</button>
+    </div>
+</div>
+
+<!-- Confirm Give Up Popup -->
+<div id="confirmPopup" class="popup" style="display:none;">
+    <div class="popup-content">
+        <h2>Give up session?</h2>
+        <p>Your progress will be saved.</p>
+        <div class="popup-buttons">
+            <button class="cancelBtn" onclick="closeConfirm()">Cancel</button>
+            <button class="confirmBtn" onclick="confirmGiveUp()">Yes, Give Up</button>
+        </div>
+    </div>
+</div>
+
+<script>
+let totalSeconds=0, remainingSeconds=0, timer=null, originalTime=0;
+
+function setTime(){
+    const minutes=parseInt(document.getElementById("studyMinutes").value);
+    if(isNaN(minutes) || minutes<1){ alert("Enter a number > 0"); return; }
+    totalSeconds=minutes*60;
+    remainingSeconds=totalSeconds;
+    originalTime=totalSeconds;
+    updateDisplay();
+    document.getElementById("timePopup").style.display="none";
+}
+
+function startTimer(){
+    document.getElementById("studyBtn").style.display="none";
+    document.getElementById("giveUpBtn").style.display="inline-block";
+    timer=setInterval(updateTimer,1000);
+}
+
+function updateTimer(){
+    remainingSeconds--;
+    updateDisplay();
+    if(remainingSeconds<=0){ clearInterval(timer); saveSession(originalTime); resetTimer(); }
+}
+
+function resetTimer(){
+    remainingSeconds=originalTime;
+    updateDisplay();
+    document.getElementById("studyBtn").style.display="inline-block";
+    document.getElementById("giveUpBtn").style.display="none";
+}
+
+function updateDisplay(){
+    const mins=Math.floor(remainingSeconds/60);
+    const secs=remainingSeconds%60;
+    document.getElementById("timerDisplay").innerText=`${mins}:${secs.toString().padStart(2,'0')}`;
+}
+
+function saveSession(duration){
+    fetch("/save_session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({duration:duration})});
+}
+
+function openConfirm(){document.getElementById("confirmPopup").style.display="flex";}
+function closeConfirm(){document.getElementById("confirmPopup").style.display="none";}
+function confirmGiveUp(){
+    document.getElementById("confirmPopup").style.display="none";
+    clearInterval(timer);
+    const studied=originalTime-remainingSeconds;
+    if(studied>0){saveSession(studied);}
+    resetTimer();
+}
+</script>
+
+{% endblock %}

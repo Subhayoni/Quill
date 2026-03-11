@@ -1,10 +1,36 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/Contact.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
 {% endblock %}
 
 {% block body %}
+
+<!-- Include Navbar for logged-in users -->
+{% include 'navbar2.html' %}
+
+<div class="contact-container">
+
+    <h1>Contact Us</h1>
+    <p>We’d love to hear your feedback or suggestions!</p>
+
+    <form action="{{ url_for('Contact') }}" method="POST" class="contact-form"></form>
+        <!-- Name -->
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <!-- Email -->
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <!-- Feedback -->
+        <label for="message">Your Feedback / Review</label>
+        <textarea id="message" name="message" rows="6" placeholder="Write your feedback..." required></textarea>
+
+        <!-- Submit -->
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+</div>
 
 {% endblock %}

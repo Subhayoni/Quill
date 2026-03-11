@@ -4,11 +4,14 @@
     box-sizing: border-box;
 }
 
+body{
+    overflow-x: hidden;
+}
 
 .hero{
     background-color: #E3DFFF;
     color:#A389F4;
-    min-height: 94vh;          
+    min-height: 100vh;          
     padding: 80px 40px;
     display:flex;
 
@@ -35,7 +38,8 @@
 }
 
 .left-element{
-    width: 1000px;
+    max-width: 1000px;
+    width: 100%;
     height:auto;
     position:absolute;
     padding-top: 10rem;

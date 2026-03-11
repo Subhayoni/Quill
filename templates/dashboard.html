@@ -2,84 +2,128 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar2.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 {% endblock %}
 
 {% block body %}
+
+<!-- Include Navbar -->
+{% include 'navbar2.html' %}
 
 <div class="dashboard">
 
     <!-- Top Section -->
     <section class="top-section">
-
         <div class="welcome-card">
-            <h1>Welcome back!</h1>
+            <h1>Welcome back, {{ username }}!</h1>
             <p>Ready to focus and make progress today?</p>
-
-            <button class="study-btn">Study Now</button>
+            <a href="{{ url_for('timer') }}">
+                <button class="study-btn">Study Now</button>
+            </a>
         </div>
 
         <div class="stats-card">
             <h2>This Week You Studied:</h2>
-
             <div class="stats">
                 <div class="stat">
-                    <span class="number">12</span>
-                    <span class="label">Total Hours</span>
+                    <span class="number">{{ total_hours }}</span>
+                    <span class="label">This Week</span>
                 </div>
-
                 <div class="stat">
-                    <span class="number">2</span>
+                    <span class="number">{{ avg_per_day }}</span>
                     <span class="label">Avg / Day</span>
                 </div>
             </div>
-
         </div>
-
     </section>
 
     <!-- Overview -->
-    <h2 class="overview-title">Overview</h2>
+    <h2 class="overview-title"></h2>
 
     <section class="overview">
 
-        <!-- Tasks -->
-        <div class="card-tasks-card">
-
-            <h3>Today's Tasks</h3>
-
-            <ul class="task-list">
-                <li>
-                    <input type="checkbox">
-                    Finish DSA practice
-                </li>
-
-                <li>
-                    <input type="checkbox">
-                    Watch DBMS lecture
-                </li>
-
-                <li>
-                    <input type="checkbox">
-                    Review notes
-                </li>
-            </ul>
-
+        <!-- Tasks Card -->
+        <div class="tasks-card">
+            {% set completed_tasks = tasks|selectattr("completed")|list|length %}
+            {% set total_tasks = tasks|length %}
+            <h3>Today's Tasks ({{ completed_tasks }}/{{ total_tasks }})</h3>
+            <div class="task-list-wrapper">
+                <ul class="task-list">
+                    {% for task in tasks %}
+                    <li class="task-item">
+                        <input type="checkbox" {% if task.completed %}checked{% endif %} onclick="toggleTask({{ task.id }})">
+                        <div class="task-info">
+                            <strong class="{% if task.completed %}completed-task{% endif %}">{{ task.content }}</strong>
+                            <span class="task-meta">
+                                Subject: {{ task.subject }}
+                                {% if task.deadline %}| Deadline: {{ task.deadline.strftime('%b %d') }}{% endif %}
+                            </span>
+                        </div>
+                        <form action="{{ url_for('delete_task', task_id=task.id) }}" method="POST" class="delete-task-form">
+                            <button type="submit" class="delete-btn"><i class="fa-solid fa-xmark"></i></button>
+                        </form>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <button class="add-task-btn" onclick="openPopup()">+</button>
         </div>
 
-        <!-- Calendar -->
-        <div class="card calendar-card">
-
-            <h3>Calendar</h3>
-
-            <div class="calendar-placeholder">
-                <p>Your study schedule will appear here.</p>
-            </div>
-
+        <!-- Calendar Card -->
+        <div class="calendar-card">
+            <div id="calendar"></div>
         </div>
 
     </section>
-
 </div>
+
+<!-- Add Task Popup -->
+<div id="taskPopup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <h3>Add New Task</h3>
+        <form action="{{ url_for('add_task') }}" method="POST">
+            <input type="text" name="task" placeholder="Enter your task..." required>
+            <input type="text" name="subject" placeholder="Subject (DSA, OS, DBMS...)" required>
+            <label>Deadline</label>
+            <input type="date" name="deadline">
+            <button type="submit">Add Task</button>
+        </form>
+    </div>
+</div>
+
+<script>
+/* Popup */
+function openPopup(){ document.getElementById("taskPopup").style.display = "flex"; }
+function closePopup(){ document.getElementById("taskPopup").style.display = "none"; }
+
+/* Toggle completed */
+function toggleTask(taskId){
+    fetch(`/toggle_task/${taskId}`, { method:'POST' })
+    .then(()=>location.reload());
+}
+
+/* Calendar */
+document.addEventListener('DOMContentLoaded', function(){
+    const calendarEl = document.getElementById('calendar');
+    const events = [
+        {% for task in tasks %}
+            {% if task.deadline %}
+            { title: "{{ task.content }}", start: "{{ task.deadline.strftime('%Y-%m-%d') }}" },
+            {% endif %}
+        {% endfor %}
+    ];
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView:'dayGridMonth',
+        height:"100%",
+        headerToolbar:{ left:'prev', center:'title', right:'next' },
+        events:events
+    });
+    calendar.render();
+});
+</script>
 
 {% endblock %}

@@ -1,0 +1,147 @@
+
+
+.timer-page{
+
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color: #E3DFFF;
+
+}
+
+
+.timer-box{
+
+    text-align:center;
+
+}
+
+
+#timerDisplay{
+
+    font-size:120px;
+    font-weight:bolder;
+    letter-spacing:4px;
+    color:#482d6f;
+
+    margin-bottom:40px;
+
+}
+
+
+#studyBtn{
+
+    padding:16px 50px;
+    font-size:18px;
+    border:none;
+    border-radius:40px;
+    background:#A389F4;
+    color:white;
+    cursor:pointer;
+
+}
+
+
+#giveUpBtn{
+
+    padding:14px 40px;
+    font-size:16px;
+    border-radius:40px;
+    border:1px solid #ccc;
+    background:#A389F4;
+    color:white;
+    cursor:pointer;
+
+}
+
+
+.popup{
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.3);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+.popup-content{
+
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    text-align:center;
+
+}
+
+
+.popup-content input{
+
+    width:200px;
+    padding:10px;
+    margin:20px 0;
+
+    font-size:18px;
+
+}
+
+
+.popup-content button{
+
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:#A389F4;
+    color:white;
+    cursor:pointer;
+
+}
+
+.popup-buttons{
+
+    margin-top:20px;
+    display:flex;
+    gap:15px;
+    justify-content:center;
+
+}
+
+.cancelBtn{
+
+    padding:10px 25px;
+    border-radius:25px;
+    border:1px solid #ccc;
+    background:white;
+    cursor:pointer;
+
+}
+
+.confirmBtn{
+
+    padding:10px 25px;
+    border-radius:25px;
+    border:none;
+    background:#A389F4;
+    color:white;
+    cursor:pointer;
+
+}
+
+#studyBtn:hover{
+    background-color: #482d6f;
+    transform:scale(1.05);
+}
+
+#giveUpBtn:hover{
+    background-color: #482d6f;
+    transform:scale(1.05);
+}
