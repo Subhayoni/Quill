@@ -10,12 +10,10 @@
 
 {% block body %}
 
-<!-- Include Navbar -->
 {% include 'navbar2.html' %}
 
 <div class="dashboard">
 
-    <!-- Top Section -->
     <section class="top-section">
         <div class="welcome-card">
             <h1>Welcome back, {{ username }}!</h1>
@@ -40,12 +38,10 @@
         </div>
     </section>
 
-    <!-- Overview -->
     <h2 class="overview-title"></h2>
 
     <section class="overview">
 
-        <!-- Tasks Card -->
         <div class="tasks-card">
             {% set completed_tasks = tasks|selectattr("completed")|list|length %}
             {% set total_tasks = tasks|length %}
@@ -72,7 +68,6 @@
             <button class="add-task-btn" onclick="openPopup()">+</button>
         </div>
 
-        <!-- Calendar Card -->
         <div class="calendar-card">
             <div id="calendar"></div>
         </div>
@@ -80,7 +75,6 @@
     </section>
 </div>
 
-<!-- Add Task Popup -->
 <div id="taskPopup" class="popup">
     <div class="popup-content">
         <span class="close-btn" onclick="closePopup()">&times;</span>
@@ -96,17 +90,15 @@
 </div>
 
 <script>
-/* Popup */
+
 function openPopup(){ document.getElementById("taskPopup").style.display = "flex"; }
 function closePopup(){ document.getElementById("taskPopup").style.display = "none"; }
 
-/* Toggle completed */
 function toggleTask(taskId){
     fetch(`/toggle_task/${taskId}`, { method:'POST' })
     .then(()=>location.reload());
 }
 
-/* Calendar */
 document.addEventListener('DOMContentLoaded', function(){
     const calendarEl = document.getElementById('calendar');
     const events = [

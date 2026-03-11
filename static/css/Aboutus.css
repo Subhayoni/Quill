@@ -9,12 +9,10 @@ body {
     overflow: hidden;
 }
 
-/* Page wrapper */
 .about-page {
     height: calc(100vh - 120px); 
 }
 
-/* Main layout */
 .about-main {
     display: flex;
     align-items: flex-start;
@@ -22,7 +20,6 @@ body {
     padding: 40px 60px; 
 }
 
-/* Image wrapper */
 .image-container {
     width: 50%;
     display: flex;
@@ -32,7 +29,6 @@ body {
 }
 
 
-/* Heading on image */
 .about-header {
     position: static;       
     text-align: center;
@@ -50,21 +46,20 @@ body {
     color: #8353c6;
     opacity: 0.85;
 }
-/* Image */
+
 .girl-img {
     width: 100%;
     max-height: 70vh;
     object-fit: contain;
     transform: scaleX(-1);
 }
-/* Right content */
+
 .content {
     width: 50%;
     padding: 40px;
     margin-top: -40px;
 }
 
-/* Cards */
 .page {
     background-color: #F8F6FF;
     padding: 30px 40px; 
@@ -90,14 +85,12 @@ body {
     border-radius: 10px;
 }
 
-/* Hover */
 .mission:hover,
 .vision:hover {
     transform: translateY(-4px);
     box-shadow: 0 14px 40px rgba(72, 45, 111, 0.2);
 }
 
-/* Text */
 .content h2 {
     color: #482d6f;
     text-align: center;

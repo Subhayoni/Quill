@@ -16,7 +16,6 @@
         <form method="POST" autocomplete="off" class="form-register">
             {{ form.hidden_tag() }}
 
-            <!-- Username -->
             <div class="input-group">
                 <i class="fa-solid fa-user"></i>
                 {{ form.username(
@@ -28,7 +27,6 @@
                 {% endfor %}
             </div>
 
-            <!-- Email -->
             <div class="input-group">
                 <i class="fa-solid fa-envelope"></i>
                 {{ form.email(
@@ -40,7 +38,6 @@
                 {% endfor %}
             </div>
 
-            <!-- Password -->
             <div class="input-group">
                 <i class="fa-solid fa-lock"></i>
                 {{ form.password(
@@ -53,7 +50,6 @@
                 {% endfor %}
             </div>
 
-            <!-- Confirm Password -->
             <div class="input-group">
                 <i class="fa-solid fa-lock"></i>
                 {{ form.confirm_password(
@@ -66,7 +62,6 @@
                 {% endfor %}
             </div>
 
-            <!-- Submit -->
             {{ form.submit(class_="submit-btn") }}
         </form>
     </div>

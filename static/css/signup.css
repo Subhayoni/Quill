@@ -15,7 +15,6 @@ body{
     justify-content: center;
 }
 
-/* Form card */
 .form {
     background-color: #F8F6FF;
     padding: 36px 42px;
@@ -31,13 +30,11 @@ body{
     box-shadow: 0 14px 40px rgba(72, 45, 111, 0.16);
 }
 
-/* Input wrapper */
 .input-group {
     position: relative;
     margin-bottom: 18px;
 }
 
-/* Input fields */
 .form-input {
     width: 100%;
     padding: 12px 14px 12px 42px;
@@ -48,13 +45,11 @@ body{
     background-color: #fff;
 }
 
-/* Input focus */
 .form-input:focus {
     border-color: #482d6f;
     box-shadow: 0 0 0 2px rgba(72, 45, 111, 0.2);
 }
 
-/* Icons inside inputs */
 .input-group i {
     position: absolute;
     left: 14px;
@@ -64,7 +59,6 @@ body{
     font-size: 15px;
 }
 
-/* Error text */
 .error {
     font-size: 13px;
     color: #d9534f;
@@ -72,7 +66,6 @@ body{
     display: block;
 }
 
-/* Submit button */
 .form button,
 .form input[type="submit"] {
     width: 100%;

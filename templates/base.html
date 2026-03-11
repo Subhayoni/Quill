@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <title>Quill</title>
 
-    <!-- Fonts and Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Global CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
@@ -20,12 +18,12 @@
 
 <header>
     {% block navbar %}
-        <!-- Default: show visitor navbar -->
+
         {% include 'navbar1.html' %}
     {% endblock %}
 </header>
 
-<main style="margin-top: 60px;"> <!-- Reserve space for fixed navbar -->
+<main style="margin-top: 60px;"> 
     {% block body %}{% endblock %}
 </main>
 

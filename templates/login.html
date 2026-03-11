@@ -17,7 +17,6 @@
 
             {{ form.hidden_tag() }}
 
-            <!-- Email -->
             <div class="input-group">
                 {{ form.email(
                     placeholder="Email",
@@ -29,7 +28,6 @@
                 {% endfor %}
             </div>
 
-            <!-- Password -->
             <div class="input-group">
                 {{ form.password(
                     placeholder="Password",
@@ -41,7 +39,6 @@
                 {% endfor %}
             </div>
 
-            <!-- Submit Button -->
             {{ form.submit(class_="login-btn") }}
 
         </form>

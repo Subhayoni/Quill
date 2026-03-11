@@ -3,16 +3,12 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Center container */
-
 .login-container{
     height:85vh;
     display:flex;
     justify-content:center;
     align-items:center;
 }
-
-/* Login card */
 
 .login-card{
     background:#ffffff;
@@ -22,15 +18,12 @@ body{
     box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-/* Heading */
 
 .login-card h1{
     text-align:center;
     margin-bottom:30px;
     color:#482d6f;
 }
-
-/* Inputs */
 
 .input-group{
     margin-bottom:18px;
@@ -46,14 +39,12 @@ body{
     transition:0.2s;
 }
 
-/* Input focus */
 
 .input-field:focus{
     border-color:#6b4bb6;
     box-shadow:0 0 4px rgba(107,75,182,0.3);
 }
 
-/* Fix browser autofill yellow */
 
 input:-webkit-autofill,
 input:-webkit-autofill:focus{
@@ -61,7 +52,6 @@ input:-webkit-autofill:focus{
     -webkit-text-fill-color:#000 !important;
 }
 
-/* Button */
 
 .login-btn{
     width:100%;
@@ -80,7 +70,6 @@ input:-webkit-autofill:focus{
     background:#5638a3;
 }
 
-/* Signup text */
 
 .signup-link{
     margin-top:20px;
@@ -94,7 +83,6 @@ input:-webkit-autofill:focus{
     font-weight:bold;
 }
 
-/* Errors */
 
 .error{
     color:red;
