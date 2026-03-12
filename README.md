@@ -10,71 +10,44 @@ This project was built to strengthen my understanding of full-stack development,
 
 Features
 
-Task Management
+* Task Management - Create, edit, delete tasks and mark tasks as completed
 
-Create, edit, and delete tasks
+* Persistent task storage using a relational database
 
-Mark tasks as completed
+* User Authentication - Secure user registration and login, session-based authentication
 
-Persistent task storage using a relational database
+* Dashboard - Personalized task dashboard, displays an overview of user activity, shows task statistics such as completed and pending tasks, central hub for managing productivity
 
-User Authentication
+* Pomodoro Timer - Built-in productivity timer based on the Pomodoro technique
 
-Secure user registration and login
-
-Session-based authentication
-
-Personalized task dashboard for each user
-
-Dashboard
-
-Displays an overview of user activity
-
-Shows task statistics such as completed and pending tasks
-
-Central hub for managing productivity
-
-Pomodoro Timer
-
-Built-in productivity timer based on the Pomodoro technique
 
 Tech Stack
 
-Frontend
+* Frontend - HTML, CSS, Javascript, Jinja Templates
 
-HTML
+* Backend - Python, Flask
 
-CSS
+* Database - MySQL
 
-Jinja Templates
+*Tools - Git & GitHub, Render 
 
-Backend
-
-Python
-
-Flask
-
-Database
-
-MySQL
-
-Tools
-
-Git & GitHub
-
-Render 
 
 What I Learned
 
-Building a full-stack application using Flask
+* Building a full-stack application using Flask
 
-Implementing authentication and session management
+* Implementing authentication and session management
 
-Designing a modular project structure
+* Designing a modular project structure
 
-Integrating productivity tools like a Pomodoro timer
+* Integrating productivity tools like a Pomodoro timer
 
-Developing dashboard-style user interfaces
-Helps users maintain focus during work sessions
+* Developing dashboard-style user interfaces
+  
+* Helps users maintain focus during work sessions
 
-Integrated within the dashboard for seamless workflow
+* Integrated within the dashboard for seamless workflow
+
+
+
+
